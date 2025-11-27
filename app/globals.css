@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+.clip-slant {
+  position: relative;
+  z-index: 1;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Nuevo método: Recorte de Polígono */
+  /* El polígono recorre los puntos:
+     1. Esquina superior izquierda (0% 0%)
+     2. Esquina superior derecha (100% 0%)
+     3. Punto inferior derecho (100% 88%)
+     4. Punto inferior izquierdo (0% 100%)
+     
+     Esto crea un corte en la parte inferior izquierda hacia arriba.
+     Si el corte va de Izquierda (alto) a Derecha (bajo), usa: 0% 100%, 100% 95%
+     
+     -> Para que parezca que la diagonal sube un poco a la derecha:
+     
+     Corte: 0% 100% (Abajo Izquierda), 100% 95% (Abajo Derecha).
+     Ajusta el 95% para cambiar la inclinación.
+  */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  padding-bottom: 50px;
 }
