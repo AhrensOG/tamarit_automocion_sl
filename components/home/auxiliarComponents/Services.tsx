@@ -71,7 +71,7 @@ const SERVICES: ServiceItem[] = [
     id: "mecanica-especializada",
     title: "Mecánica Especializada",
     description:
-      "Reparación y diagnosis de averías complejas de motor, culata y sistemas de inyección. Expertise técnico avanzado.",
+      "Reparación y diagnosis de averías complejas de motor, culata y sistemas de inyección. Experiencia técnica avanzada.",
     icon: HandPlatter, // Icono acorde: Simboliza la entrega de un servicio experto
   },
   {
